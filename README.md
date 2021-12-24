@@ -4,6 +4,8 @@ O "Eu Nunca!" é um jogo para animar uma festa enquanto você descobre coisas so
 
 > [Visite o Quadro do Projeto](https://github.com/inolopesm/eu-nunca/projects/1)
 
+> [Visite o Nosso Site](https://eununca.app)
+
 ## Diagramas
 
 ### Diagrama de caso de uso
