@@ -2,6 +2,8 @@
 
 O "Eu Nunca!" é um jogo para animar uma festa enquanto você descobre coisas sobre os seus amigos.
 
+> [Visite o Quadro do Projeto](https://github.com/inolopesm/eu-nunca/projects/1)
+
 ## Diagramas
 
 ### Diagrama de caso de uso
