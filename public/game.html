@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Eu Nunca!</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .title {
+      font-size: 1.25em;
+      font-weight: 900;
+    }
+
+    .phrase {
+      font-size: 2em;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="d-flex flex-column min-vh-100">
+      <div class="py-5 text-center">
+        <div class="title">Eu Nunca!</div>
+        <div class="subtitle"></div>
+      </div>
+      <div class="flex-grow d-flex align-items-center justify-content-center">
+        <div class="phrase text-center"></div>
+      </div>
+      <div class="py-5 d-flex justify-content-center gap-3">
+        <a class="btn btn-gray" href="index.html">Voltar ⏹️</a>
+        <button class="btn btn-gray" id="next-button">Próximo ⏭️</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      const urlSearchParams = new URLSearchParams(window.location.search)
+      const mode = urlSearchParams.get('mode')
+
+      if (mode === null) {
+        window.alert('mode is null')
+        return
+      }
+
+      const Mode = {
+        NORMAL: 'normal',
+        ADULT: 'adult'
+      }
+
+      if (!Object.values(Mode).includes(mode)) {
+        window.alert('invalid mode')
+        return
+      }
+
+      const phrases = [
+        {
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+          mode: Mode.NORMAL
+        },
+        {
+          text: 'Sed tempor, erat vitae vestibulum accumsan, neque elit scelerisque velit',
+          mode: Mode.ADULT
+        },
+        {
+          text: ' In rutrum nisl turpis, vel hendrerit dui eleifend eu',
+          mode: Mode.NORMAL
+        },
+        {
+          text: 'Fusce id eleifend erat, vel feugiat quam',
+          mode: Mode.ADULT
+        }
+      ]
+
+      const filteredPhrasesByMode = phrases.filter(phrase => phrase.mode === mode)
+      const filteredPhrasesByModeRandomIndex = Math.floor(Math.random() * filteredPhrasesByMode.length)
+      const randomPhrase = filteredPhrasesByMode[filteredPhrasesByModeRandomIndex]
+
+      const $phrase = document.querySelector('.phrase')
+
+      if ($phrase === null) {
+        window.alert('$phrase is null')
+        return
+      }
+
+      $phrase.innerText = randomPhrase.text
+
+      const $subtitle = document.querySelector('.subtitle')
+
+      if ($subtitle === null) {
+        window.alert('$subtitle is null')
+        return
+      }
+
+      const ModeInPortuguese = {
+        [Mode.NORMAL]: 'Normal 😃',
+        [Mode.ADULT]: 'Adulto 🔥'
+      }
+
+      const modeInPortuguese = ModeInPortuguese[mode]
+
+      if (modeInPortuguese === undefined) {
+        window.alert('invalid portuguese mode')
+        return
+      }
+
+      $subtitle.innerText = `Modo ${modeInPortuguese}`
+    })
+
+    window.addEventListener('load', () => {
+      const $nextButton = document.querySelector('#next-button')
+      
+      if ($nextButton === null) {
+        window.alert('$nextButton is null')
+        return
+      }
+
+      $nextButton.addEventListener('click', () => {
+        window.location.reload()
+      })
+    })
+  </script>
+</body>
+</html>
