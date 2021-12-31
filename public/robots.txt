@@ -2,3 +2,4 @@ User-agent: *
 Allow: /index.html
 Disallow: /game.html
 Disallow: /phrases.json
+Sitemap: https://eununca.app/sitemap.xml
