@@ -24,7 +24,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"></script>
   <script>
-    window.addEventListener('load', () => {
+    window.addEventListener('load', async () => {
       const urlSearchParams = new URLSearchParams(window.location.search)
       const mode = urlSearchParams.get('mode')
 
@@ -43,24 +43,7 @@
         return
       }
 
-      const phrases = [
-        {
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-          mode: Mode.NORMAL
-        },
-        {
-          text: 'Sed tempor, erat vitae vestibulum accumsan, neque elit scelerisque velit',
-          mode: Mode.ADULT
-        },
-        {
-          text: ' In rutrum nisl turpis, vel hendrerit dui eleifend eu',
-          mode: Mode.NORMAL
-        },
-        {
-          text: 'Fusce id eleifend erat, vel feugiat quam',
-          mode: Mode.ADULT
-        }
-      ]
+      const phrases = await fetch('phrases.json').then(response => response.json())
 
       const filteredPhrasesByMode = phrases.filter(phrase => phrase.mode === mode)
       const filteredPhrasesByModeRandomIndex = Math.floor(Math.random() * filteredPhrasesByMode.length)
