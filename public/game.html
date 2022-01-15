@@ -84,9 +84,7 @@
       }
 
       $subtitle.innerText = `Modo ${modeInPortuguese}`
-    })
 
-    window.addEventListener('load', () => {
       const $nextButton = document.querySelector('#next-button')
       
       if ($nextButton === null) {
@@ -96,7 +94,9 @@
       }
 
       $nextButton.addEventListener('click', () => {
-        window.location.reload()
+        const filteredPhrasesByModeRandomIndex = Math.floor(Math.random() * filteredPhrasesByMode.length)
+        const randomPhrase = filteredPhrasesByMode[filteredPhrasesByModeRandomIndex]
+        $phrase.innerText = randomPhrase.text
       })
     })
   </script>
